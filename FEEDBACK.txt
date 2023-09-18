@@ -1,0 +1,467 @@
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script src="/views/Scripts/js/jquery.js"></script>
+<script type="text/javascript" src="views/jsFiles/GlobalValidation.js?ver=2016"></script>
+<script language="javascript" type="text/javascript">
+var bCaptchaFFEnabled='0';
+$(document).ready(function () {
+	
+	$("#mobileno").keypress(function (e) {
+	     //if the letter is not digit then display error and don't type anything
+	     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+	        //display error message
+	        $(".mnoerror").text("Only Numeric Values Allowed");
+	               return false;
+	    }
+	   });
+});
+
+function validateEmail(email) {
+    var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    return re.test(email);
+}
+
+$(document).ready(function() {
+	$("#idSubmit").click(function(e) {
+		
+		trimallfields();
+		//var nameVal = /^[A-Za-z\d\s]*$/;
+		 $("#errmsgName").text(" ");
+		 $("#errmsgmno").text(" ");
+		 $("#errmsgeId").text(" ");
+		 $("#errmsgMsg").text(" ");
+ 
+	  if($('#name').val() == "")
+		{
+			$("#errmsgName").text("Please enter your name.");
+			$("#name").focus();
+			return false;
+		}
+	  
+	  if(!atleastOneAlphaNoSpecialChar($('#name').val(),"name","errmsgName","","id","text")){
+		  $("#name").focus();
+		  return false;  
+		 }
+	 /*  if(!(nameVal.test($('#name').val()))) {
+		  $("#errmsgName").text("Please enter alphanumeric.");
+			$("#name").focus();
+			return false;
+		} */
+	  
+	   if ($('#mobileno').val() == "") {
+		  $("#errmsgmno").text("Please enter your mobile number.");
+		  $('#mobileno').focus();
+		  return false;
+		 }
+	   
+	   if ($('#mobileno').val().length != 10) {
+			  $("#errmsgmno").text("The phone number is the wrong length. \nPlease enter 10 digit mobile no.");
+			  $('#mobileno').focus();
+			  return false;
+		}
+	   
+	   if($("#emailid").val() == "")
+		   {
+		   $("#errmsgeId").text("Please enter email id.");
+		   $("#emailid").focus();
+			  return false;
+		   }
+	   
+	    if(!validateEmail($("#emailid").val())){
+			$("#errmsgeId").text("Please enter valid email id.");
+			 $("#emailid").focus();
+			return false;
+		}
+	   
+	    if ($('#message').val() == "") {
+		      $("#errmsgMsg").text("Please enter message.");
+		      //$('#message').focus;
+		       return false;
+		   }
+	    if(bCaptchaFFEnabled == 1){
+	    var input=$("#captcha").val();
+        if(input == ''){
+                alert("Please Enter Capcha");
+                return false;
+        }
+        if(input.length != 8){
+                alert("Please Enter Correct Capcha");
+                return false;
+        }
+	    }
+	    document.feedbacksuggestionbean.action = "send-feedback-suggestions.html";
+		document.feedbacksuggestionbean.method = "POST";
+		document.feedbacksuggestionbean.submit();
+		});
+});
+
+</script>
+</head>
+<body>
+	<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to eProcurement - Tender Management System - Govt
+	of Andhra Pradesh</title>
+
+<!-- Responsive CSS Starts Here -->
+
+<link href="/views/themes/currenttheme/homepage/css/bootstrap.min.css" rel="stylesheet">
+<link href="/views/themes/currenttheme/homepage/fonts/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+<link href="/views/themes/currenttheme/homepage/css/navigation.css" type="text/css" rel="stylesheet">
+
+<!-- Responsive CSS Ends Here -->
+
+<link href="/views/themes/currenttheme/style_new.css" rel="stylesheet" type="text/css" />
+<script src="/views/Scripts/js/jquery.js"></script>
+<link rel="stylesheet" href="/views/PagerFiles/theme.blue.css">
+<script src="/views/PagerFiles/jquery.tablesorter.js?ver=2016"></script>
+<link rel="stylesheet" href="/views/PagerFiles/jquery.tablesorter.pager.css">
+<script src="/views/PagerFiles/jquery.tablesorter.pager.js?ver=2016"></script>
+
+<link href="/views/themes/currenttheme/homepage/css/grayCSS.css" type="text/css" rel="stylesheet">
+
+<script id="js">$(function(){	
+	var pagerOptions = {		
+		container: $(".pager"),
+		size: 10
+
+	};
+	$("#pagetable")		
+		.tablesorter({
+			theme: 'blue',
+			widthFixed: false,
+			showProcessing   : true, 
+			widgets: ['zebra']
+		})
+		.tablesorterPager(pagerOptions);
+
+});</script>
+
+<script type="text/javascript">
+document.onkeydown = function(e) {
+	if(event.keyCode == 123) {
+		console.log("test");
+	return false;
+	}
+	if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)){
+	return false;
+	}
+	if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)){
+	return false;
+	}
+	if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)){
+	return false;
+	}
+	}
+	$(document).ready(function() {		
+		$(".GridBG tbody tr:even").addClass("GridEvenRow");
+		$(".GridBG tbody tr:odd").addClass("GridOddRow");
+		$(".TenderHeadeBG tr:even").addClass("GridEvenRow");
+		$(".TenderHeadeBG tr:odd").addClass("GridOddRow");		
+	}); 
+</script>
+</head>
+<script type="text/javascript">
+$(window).on('load', function() {
+	$(".loader").fadeOut("slow");
+})
+
+</script>
+<body oncontextmenu="return false;">
+	<div class="loader"></div>
+	<iframe name='gToday:datetime:agenda.js:gfPop:plugins_12.js'
+		id='gToday:datetime:agenda.js:gfPop:plugins_12.js'
+		src='/views/Calender/ipopengDTP.htm'
+		scrolling='no' frameborder='0' class="CalFrame"> </iframe>
+	<iframe name='gToday:datetime:agenda.js:gfPop1:plugins.js'
+		id='gToday:datetime:agenda.js:gfPop1:plugins.js'
+		src='/views/Calender/ipopengDTP.htm'
+		scrolling='no' frameborder='0' class="CalFrame"> </iframe>
+
+
+	<!-- pageTop Bar Starts Here -->		
+		<div class="container-fluid tsFooterDown">
+		<div class="row tsFooterDown" id="myDIV-1">
+
+			<div class="col-lg-4 col-md-6 col-sm-6">
+
+				<div class="footer-social-icons">
+					<ul class="social-icons">
+						<li><a href="#" class="social-icon"> <i class="fa fa-facebook"></i></a></li>
+						<li><a href="#" class="social-icon"> <i class="fa fa-twitter"></i></a></li>
+						<li><a href="#" class="social-icon"> <i class="fa fa-youtube"></i></a></li>
+						<!-- <li><a href="#" class="social-icon"> <i
+								class="fa fa-linkedin"></i></a></li>
+						<li><a href="#" class="social-icon"> <i
+								class="fa fa-google-plus"></i></a></li> -->
+					</ul>
+				</div>
+
+			</div>
+			<div class="col-lg-4 col-md-6 col-sm-6 titleText">
+				<b>Tender Management System - Govt of Andhra Pradesh </b>
+			</div>
+			<div class="col-lg-4 col-md-6 col-sm-6">
+
+				<div class="skipText">
+					<!-- <a href="#skipContentBox" style="color: #fff;"> Skip to Content</a> -->
+				</div>
+
+				<div class="pull-right">
+					<div class="btn-group">
+						<a href="#" class="btn2" style="margin: 5px;" title="" onclick="fnPreLogin('screenReader.html')"><i class="fa fa-wheelchair" style="font-size: 14px;"> </i></a> <a href="#" class="decrease btn2" title="Decrease font size"><i class="fa fa-font size1"> <i class="fa fa-minus minus"> </i>
+						</i></a> <a href="#" class="resetMe btn2" title="Default font size"><i class="fa fa-font size1"> </i></a> <a href="#" class="increase btn2" title="Increase font size"><i class="fa fa-font size1"> <i class="fa fa-plus plus"> </i>
+						</i></a> <a href="#" class="white btn2" onclick="btnGrayScale()"><i class="fa fa-font white size1"> </i></a> <a href="#" class="whiteR btn2" onclick="btnNormalScale()"><i class="fa fa-font size1"> </i></a>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		</div>		
+		<!-- pageTop Bar Ends Here -->
+		
+	
+		<header class="tsHeader">
+			<a href="#">
+			<img src="/views/themes/currenttheme/homepage/images/header-1.jpg" title="Welcome to AP E-Procurement Portal - Govt of Andhra Pradesh" alt="Welcome to AP E-Procurement Portal - Govt of Andhra Pradesh" width="100%" id="tsHeaderImg">
+			</a>
+		</header>
+	
+
+	
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<script>
+	function misReport()
+	{
+	document.misreports.action = "mis-reports.html";
+	document.misreports.method = "POST";
+	document.misreports.submit();
+	}
+	
+	function fnPreLogin(url)
+	{
+	document.misreports.action = url;
+	document.misreports.method = "POST";
+	document.misreports.submit();
+	}
+	
+	
+	</script>
+</head>
+<body>
+	<form id="misreports" name="misreports" action="/feedback-suggestions.html" method="post">
+		<!-- Navigation Starts Here -->
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id='cssmenu'>
+					<ul class="nav navbar-nav">
+
+						<li><a href='login.html'>Home</a></li>
+						<li><a href="#" onclick="fnPreLogin('eprocurement-guidelines.html')">eProcurement
+								Guidelines</a></li>
+						<li><a href="#" onclick="misReport()">MIS Reports</a></li>
+						<li><a href="training-kits.html">Training Manuals</a></li>
+						<li><a href="#" onclick="fnPreLogin('news-government-orders.html')">Government
+								Orders</a></li>
+						<li><a href="#">FAQs <span class="caret"></span></a>
+							<ul>
+								<li><a href="#" onclick="fnPreLogin('faqs.html')">General</a></li>
+								<li><a href="#" onclick="fnPreLogin('contractors-faqs.html')">Contractors</a></li>
+								<li><a href="#" onclick="fnPreLogin('departments-faqs.html')">Departments</a></li>
+							</ul>
+						<li><a href="#" onclick="fnPreLogin('downloads.html')">Downloads</a></li>
+						<li><a href="#" onclick="fnPreLogin('helpdesk.html')">HelpDesk</a></li>
+						<li><a href="feedback-suggestions.html">Feedback/
+								Suggestions</a></li>
+						<li><a href="#" onclick="fnPreLogin('contact-us.html')">Contact Us</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	<input type="hidden" name="CSRFToken" value="479ecabf-73df-409a-95f2-9b0604c053fb" />
+<input type="hidden" name="hdnEncryptNames" value="hdnEncryptNames" />
+<input type="hidden" name="hdnEncryptValues" value="hdnEncryptValues" />
+</form>
+</body>
+</html>
+	<script src="/views/jsFiles/script.js"></script>
+</body>
+</html>
+	<form id="feedbacksuggestionbean" name="feedbacksuggestionbean" action="/feedback-suggestions.html" method="post">
+		<div class="container-fluid">
+			<div class="PageTitle">
+				<span>Feedback/ Suggestions</span>
+			</div>
+			<div class="responsive-table">			
+					<table class="table table-striped table-bordered">
+							<tbody>
+
+								<tr>
+									<td align="right" width="25%" >
+									     <span class="Text">Name</span><span class="spanTextR">*</span>
+									</td>
+									<td align="left" >
+										 <input id="name" name="name" type="text" value="" size="50"/>&nbsp;
+										 <span id="errmsgName" style="color: Red"></span> 
+									</td>
+								</tr>
+
+								<tr>
+									<td align="right" width="25%" >
+									     <span class="Text">Mobile No</span> <span class="spanTextR">*</span>
+									</td>
+									<td align="left" > 
+									     <input id="mobileno" name="mobileno" type="text" value="" size="15" maxlength="10"/>&nbsp;
+									     <span id="errmsgmno" class="mnoerror" style="color: Red"></span> 
+									</td>
+								</tr>
+
+								<tr>
+									<td align="right" width="25%" >
+									   <span class="Text">Email-id</span> <span class="spanTextR">*</span>
+									 </td>
+									<td align="left" >
+									  <input id="emailid" name="emailid" type="text" value="" size="50"/>&nbsp;
+									   <span id="errmsgeId" style="color: Red"></span> 
+									</td>
+								</tr>
+
+								<tr>
+									<td align="right" width="25%"  >
+									  <span class="Text">Address</span>
+									</td>
+									<td align="left"  >
+									<input id="address" name="address" type="text" value="" size="50"/> &nbsp;
+									   <span id="errmsgAddr" style="color: Red"></span> 
+									</td>
+								</tr>
+
+								<tr>
+									<td align="right" width="25%"  valign="top">
+									  <span class="Text">Message</span> <span class="spanTextR">*</span>
+									</td>
+									<td align="left" > 
+									  <textarea id="message" name="message" maxlength="1000" rows="8" cols="50"></textarea>&nbsp;
+									  <span id="errmsgMsg" style="color: Red"></span> 
+									</td>
+								</tr>
+								
+								
+								
+								<tr>
+									<td align="right" width="25%" />
+									<td > 
+									  <input type="button" name="nSubmit" id="idSubmit" class="Button" value="Submit" onclick="fnSubmit()" />
+									 </td>
+								</tr>								
+							</tbody>
+						</table>
+			</div>
+		</div>
+	<input type="hidden" name="CSRFToken" value="479ecabf-73df-409a-95f2-9b0604c053fb" />
+<input type="hidden" name="hdnEncryptNames" value="hdnEncryptNames" />
+<input type="hidden" name="hdnEncryptValues" value="hdnEncryptValues" />
+</form>
+	<div class="bottomSpacer"></div>
+	
+         
+    
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+window.history.forward(-1);
+window.location.hash="";
+window.location.hash="Again-No-back-button";//again because google chrome don't insert first hash into history
+window.onhashchange=function(){window.location.hash="";}
+
+
+ window.onload = function () {
+        noBack();
+    }
+    window.history.forward();
+    function noBack() {
+        window.history.forward();
+    }
+   
+</script> 
+</head>
+<body onpageshow="if (event.persisted) noBack();">  
+
+	<!-- <footer class="footer">
+             <div class="tsBottomFooter text-center">
+                <div class="container">
+                    <div class="row">
+                        <ul>
+                            <li><a href='login.html'>Home</a></li>
+                            <li><a href="eprocurement-guidelines.html">eProcurement Guidelines</a></li>
+                            <li><a href="#" onclick="misReport()">MIS Reports</a></li>
+                            <li><a href="news-government-orders.html">Government Orders</a></li>
+                            <li><a href="faqs.html">FAQs</a></li>
+                            <li><a href="terms-conditions.html">Terms Conditions</a></li>
+                            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                            <li><a href="helpdesk.html">HelpDesk</a></li>
+                            <a href="contact-us.html">Contact Us</a>
+                        </ul>
+                    </div>
+                </div>
+            </div> 
+            <div class="tsFooterDown text-center">
+                <p> &copy; Vupadhi Techno Services Pvt. Ltd.
+                    <br> Developed exclusively for ITE&amp;C Department. Andhra Pradesh.</p>
+            </div>
+    </footer>-->
+    </br>
+<div class="bottomFooter">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+    <tr>
+        <td align="left" width="50%" height="20px"><span class="bottomTxt"> &copy; Vupadhi Techno Services Pvt. Ltd. <br> Developed exclusively for ITE&amp;C Department. Andhra Pradesh. </span></td>
+        <td align="right" width="50%"><span class="bottomTxt">
+             
+			Server Time: 16/06/2022 07:47:26 PM &nbsp; &nbsp; </span>
+        </td>
+    </tr>
+</table>
+</div>
+
+<!-- Copyrights Starts Here -->
+
+<!-- Copyrights Ends Here --> 
+
+<script type="text/javascript" src="views/jsFiles/temp.test.js?ver=2016"></script> 
+<script type="text/javascript" src="views/jsFiles/tempTest.js?ver=2016"></script>
+<script type="text/javascript" src="views/jsFiles/temp.js?ver=2017"></script>
+<script type="text/javascript" src="views/jsFiles/genTemp.js?ver=20172305"></script>
+
+
+    
+         
+		           
+				 
+				   <script src="/views/jsFiles/emsigner.js?ver=15042020"></script>
+					
+					
+<script src="/views/themes/currenttheme/homepage/css/grayCSS.js"></script>					
+</body>
+</html>
+</body>
+</html>

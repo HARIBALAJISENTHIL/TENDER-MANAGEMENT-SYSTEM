@@ -1,0 +1,28 @@
+<?
+$con = mysqli_connect('localhost','root','','test');
+if(!$con)
+(
+die('connection failed');
+}
+
+if(isset($_POST['submit']))
+{
+    $Name = $_POST['Name'];
+	$Mobile No = $_POST['Mobile No'];
+	$Email-id = $_POST['Email-id'];
+	$Address = $_POST['Address'];
+	$Message = $_POST['Message'];
+	
+	$sql_query = "insert into user details(Name,Mobile No,Email-id,Address,Message)"
+	values('$Name','$Mobile No','$Email-id','$Address','$Message')
+	if(mysqli_query($con,$sql_query))
+	{
+	echo "successfully";
+	}
+	esle
+	{
+	echo "error";
+	}
+	mysqli_close($con);
+	}
+	?>

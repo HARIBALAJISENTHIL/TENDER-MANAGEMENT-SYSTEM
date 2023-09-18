@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>TENDER MANAGEMENT SYSTEM</title>
+<form action="TENDER.PHP" method="post">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<style>
+*{
+background-image : url("")
+}
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add an active class to highlight the current page */
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+/* Hide the link that should open and close the topnav on small screens */
+.topnav .icon {
+  display: none;
+}
+</style>
+</head>
+<body>
+<div id="content">
+<div id="back">
+<!-- header begins -->
+<div id="header"> 
+	<div id="logo">
+		<h1 align="center"><a href="#"> <FONT SIZE="20" COLOR="#000000">TENDER MANAGEMENT SYSTEM</FONT> </a></h1>
+		<h2><a href="http://www.metamorphozis.com/" id="metamorph"><marquee>WELCOME TO TENDER MANAGEMENT</marquee></a></h2>
+	</div>
+  <!--div id="menu">
+		<ul>
+			<li id="button1"><a href="../index3.html"  title="">Home</a></li>
+			<li id="button1"><a href="../index3.html"  title="">GUIDLINES</a></li>
+			<li id="button2"><a href="../view_project.jsp" title="">View projects</a></li>
+            <li id="button3"><a href="../end.jsp" title="">tenders</a></li>
+			<li id="button6"><a href="../contactus..html" title="">Contact</a></li>
+            <li id="button6"><a href="../feedback.html" title="">FEEDBACK/SUGGESTION</a></li>
+		</ul>
+ </div-->
+ <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="topnav" id="myTopnav">
+  <a href="../index.html" class="active">Home</a>
+  <a href="CVC-Guidelines-eProcurementSolution.pdf">GUIDLINES</a>
+
+  <a href="tenderdetails.html">Tender details</a>
+  <a href="contactus.html">contact</a>
+  <a href="FEEDBACK.HTML">FEEDBACK/SUGGESTION</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="topnav" id="mytopnav">
+
+ <a href="login.html">current tender</a>
+ <br>
+<br>
+<br>
+ </div>
+<div class="topnav" id="mytopnav">
+  <a href="dataentry.html">upcoming tender</a>
+  <br> 
+  <br>
+  <br>
+  </div>
+  <div class="topnav" id="mytopnav">
+ <a href="img1.html">banking partners</a>
+ <br>
+<br>
+<br>
+ </div>
+ <div class="topnav" id="mytopnav">
+ <a href="">Announcement</a>
+ <br>
+ <br>
+<br>
+ </div>
+<br>
+
+<!-- header ends -->
+<!-- content begins -->
+ 
+<div id="footer">
+
+<br>
+<br>
+<br>
+<br>
+</div></body>
+</html>
